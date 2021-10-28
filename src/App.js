@@ -15,6 +15,7 @@ function App() {
   return (
     <div>
       <InputProject onAddProject={newProjectHandler} />
+      <AddProject projects={newProject} />
     </div>
   );
 }
