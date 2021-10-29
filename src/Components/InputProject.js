@@ -8,21 +8,13 @@ const InputProject = function (props) {
   const [validDesc, setValidDesc] = useState(true);
 
   const addNameHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setValidName(true);
-    } else {
-      setValidName(false);
-    }
+    event.target.value.trim().length > 0 && setValidName(true);
 
     setProjectName(event.target.value);
   };
 
   const addDescriptionHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setValidDesc(true);
-    } else {
-      setValidDesc(false);
-    }
+    event.target.value.trim().length > 0 && setValidDesc(true);
 
     setDescription(event.target.value);
   };
@@ -30,15 +22,13 @@ const InputProject = function (props) {
   const addProjectHandler = (event) => {
     event.preventDefault();
 
-    if (projectNames.trim().length === 0) {
-      setValidName(false);
-    }
+    projectNames.trim().length === 0 && setValidName(false);
 
-    if (description.trim().length === 0) {
-      setValidDesc(false);
-    }
+    description.trim().length === 0 && setValidDesc(false);
 
-    validName && validDesc && props.onAddProject(projectNames, description);
+    projectNames.trim().length > 0 &&
+      description.trim().length > 0 &&
+      props.onAddProject(projectNames, description);
     setProjectName("");
     setDescription("");
   };
