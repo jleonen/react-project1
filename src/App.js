@@ -10,7 +10,6 @@ function App() {
         { name: projectName, description: desc, id: Math.random().toString() },
       ];
     });
-    console.log(newProject);
   };
 
   const deleteProject = (projectID) => {
@@ -19,14 +18,20 @@ function App() {
       const updatedProjects = prevProjects.filter(
         (project) => project.id !== projectID
       );
-      console.log(updatedProjects);
+
       return updatedProjects;
     });
   };
+
+  let content = <p>No projects found. Use form above to add a project.</p>;
+  if (newProject.length > 0) {
+    content = <AddProject projects={newProject} onDeleteItem={deleteProject} />;
+  }
+
   return (
     <div>
       <InputProject onAddProject={newProjectHandler} />
-      <AddProject projects={newProject} onDeleteItem={deleteProject} />
+      <section>{content}</section>
     </div>
   );
 }

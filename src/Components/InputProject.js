@@ -37,7 +37,6 @@ const InputProject = function (props) {
     if (description.trim().length === 0) {
       setValidDesc(false);
     }
-    console.log(validName, validDesc);
 
     validName && validDesc && props.onAddProject(projectNames, description);
     setProjectName("");
