@@ -5,10 +5,14 @@ const AddProject = function (props) {
   return (
     <ul>
       {props.projects.map((project) => (
-        <li key={project.id}>
+        <ProjectItem
+          key={project.id}
+          id={project.id}
+          onDelete={props.onDeleteItem}
+        >
           <h2>{project.name}</h2>
           <p>{project.description}</p>
-        </li>
+        </ProjectItem>
       ))}
     </ul>
   );

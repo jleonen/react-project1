@@ -12,10 +12,21 @@ function App() {
     });
     console.log(newProject);
   };
+
+  const deleteProject = (projectID) => {
+    console.log("Deleting");
+    setNewProject((prevProjects) => {
+      const updatedProjects = prevProjects.filter(
+        (project) => project.id !== projectID
+      );
+      console.log(updatedProjects);
+      return updatedProjects;
+    });
+  };
   return (
     <div>
       <InputProject onAddProject={newProjectHandler} />
-      <AddProject projects={newProject} />
+      <AddProject projects={newProject} onDeleteItem={deleteProject} />
     </div>
   );
 }

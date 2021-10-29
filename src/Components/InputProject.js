@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./InputProject.module.css";
 
 const InputProject = function (props) {
-  const [projectName, setProjectName] = useState("");
+  const [projectNames, setProjectName] = useState("");
   const [description, setDescription] = useState("");
   const [validName, setValidName] = useState(true);
   const [validDesc, setValidDesc] = useState(true);
@@ -10,6 +10,8 @@ const InputProject = function (props) {
   const addNameHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setValidName(true);
+    } else {
+      setValidName(false);
     }
 
     setProjectName(event.target.value);
@@ -18,6 +20,8 @@ const InputProject = function (props) {
   const addDescriptionHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setValidDesc(true);
+    } else {
+      setValidDesc(false);
     }
 
     setDescription(event.target.value);
@@ -26,15 +30,16 @@ const InputProject = function (props) {
   const addProjectHandler = (event) => {
     event.preventDefault();
 
-    if (projectName.trim().length === 0) {
+    if (projectNames.trim().length === 0) {
       setValidName(false);
     }
 
     if (description.trim().length === 0) {
       setValidDesc(false);
     }
+    console.log(validName, validDesc);
 
-    !validName && !validDesc && props.onAddProject(projectName, description);
+    validName && validDesc && props.onAddProject(projectNames, description);
     setProjectName("");
     setDescription("");
   };
@@ -46,7 +51,7 @@ const InputProject = function (props) {
         <div className={style.inputContainer}>
           <input
             type="text"
-            value={projectName}
+            value={projectNames}
             onChange={addNameHandler}
           ></input>
           <span className={validName ? style.hidden : style.error}>
