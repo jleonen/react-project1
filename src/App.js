@@ -13,7 +13,6 @@ function App() {
   };
 
   const deleteProject = (projectID) => {
-    console.log("Deleting");
     setNewProject((prevProjects) => {
       const updatedProjects = prevProjects.filter(
         (project) => project.id !== projectID

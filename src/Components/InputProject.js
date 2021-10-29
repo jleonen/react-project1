@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./InputProject.module.css";
+import { RiErrorWarningFill } from "react-icons/ri";
 
 const InputProject = function (props) {
   const [projectNames, setProjectName] = useState("");
@@ -44,7 +45,7 @@ const InputProject = function (props) {
             onChange={addNameHandler}
           ></input>
           <span className={validName ? style.hidden : style.error}>
-            Name is required
+            <RiErrorWarningFill /> Name is required
           </span>
         </div>
 
@@ -56,7 +57,7 @@ const InputProject = function (props) {
             onChange={addDescriptionHandler}
           ></input>
           <span className={validDesc ? style.hidden : style.error}>
-            Description is required
+            <RiErrorWarningFill /> Description is required
           </span>
         </div>
         <button type="submit">Add Project</button>
