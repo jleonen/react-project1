@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap");
+
+body {
+  font-family: "Jost", sans-serif;
+}
+
+.lineItem {
+  background-color: #f8edeb;
+  list-style-type: none;
+  border: 20px solid #fec5bb;
+}
+
+.icon,
+li button {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: red;
+  color: white;
+}

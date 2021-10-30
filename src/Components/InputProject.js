@@ -56,12 +56,14 @@ const InputProject = function (props) {
           <strong>Description of project</strong>
         </label>
         <div className={style.inputContainer}>
-          <input
+          <textarea
+            rows="2"
+            cols="25"
             type="text"
             className={style.description}
             value={description}
             onChange={addDescriptionHandler}
-          ></input>
+          ></textarea>
           <span className={validDesc ? style.hidden : style.error}>
             <RiErrorWarningFill /> Description is required
           </span>

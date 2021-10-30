@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectItem from "./ProjectItem";
+import style from "./AddProject.module.css";
 
 const AddProject = function (props) {
   return (
@@ -10,7 +11,9 @@ const AddProject = function (props) {
           id={project.id}
           onDelete={props.onDeleteItem}
         >
-          <h2>{project.name}</h2>
+          <h2>
+            <strong>{project.name}</strong>
+          </h2>
           <p>{project.description}</p>
         </ProjectItem>
       ))}

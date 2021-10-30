@@ -30,6 +30,7 @@ function App() {
   return (
     <div>
       <InputProject onAddProject={newProjectHandler} />
+      <h1 style={{ textAlign: "center" }}>Project List </h1>
       <section>{content}</section>
     </div>
   );
