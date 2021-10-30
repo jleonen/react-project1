@@ -1,6 +1,5 @@
 import React from "react";
 import ProjectItem from "./ProjectItem";
-import style from "./AddProject.module.css";
 
 const AddProject = function (props) {
   return (

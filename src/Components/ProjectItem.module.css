@@ -15,6 +15,11 @@ li button {
   cursor: pointer;
 }
 
+button {
+  border: none;
+  background: white;
+}
+
 button:hover {
   background-color: red;
   color: white;

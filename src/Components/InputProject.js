@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import style from "./InputProject.module.css";
 import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
-// import { RiAddCircleFill } from "react-icons/ri";
 
 const InputProject = function (props) {
   const [projectNames, setProjectName] = useState("");
@@ -69,9 +68,9 @@ const InputProject = function (props) {
           </span>
         </div>
         <div className={style.buttonSection}>
-          <RiAddCircleFill className={style.buttonIcon} />
           <button type="submit">
-            <strong>Add Project</strong>
+            <RiAddCircleFill className={style.buttonIcon} />
+            <span>Add Project</span>
           </button>
         </div>
       </form>
