@@ -2,6 +2,10 @@ body {
   background: #fae1dd;
 }
 
+form label {
+  font-size: 20px;
+}
+
 .infoContainer,
 .formContainer,
 .inputContainer {
