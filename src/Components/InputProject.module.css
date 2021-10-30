@@ -1,3 +1,8 @@
+body {
+  background: #fae1dd;
+}
+
+.infoContainer,
 .formContainer,
 .inputContainer {
   display: flex;
@@ -7,6 +12,11 @@
 
 .formContainer {
   gap: 20px;
+  margin-bottom: 100px;
+  border: 20px solid #fec5bb;
+  width: 500px;
+  /* background-color: #f8edeb; */
+  background-color: white;
 }
 
 .hidden {
@@ -17,3 +27,74 @@
   display: inline;
   color: red;
 }
+
+.description {
+  height: 100px;
+  width: 300px;
+}
+
+button {
+  border: none;
+  background: white;
+  /* width: 162px;
+  height: 32px;
+  margin-bottom: 10px;
+  border-radius: 20px; */
+}
+
+.buttonSection {
+  display: flex;
+  background: white;
+  width: 162px;
+  height: 32px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.buttonSection:hover {
+  background-color: #f8edeb;
+}
+
+.buttonSection button {
+  cursor: pointer;
+}
+
+.buttonSection button:hover {
+  background-color: #f8edeb;
+}
+
+.buttonIcon {
+  width: 25px;
+  height: 30px;
+  color: #fec5bb;
+}
+
+/* button:hover {
+  background-color: #f8edeb;
+} */
+
+/* button {
+
+  background: white;
+  width: 162px;
+  height: 32px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.buttonIcon {
+  width: 25px;
+  height: 30px;
+  color: #fec5bb;
+  margin-right: 20px;
+}
+
+button:hover {
+  background-color: #f8edeb;
+}  */

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "./InputProject.module.css";
-import { RiErrorWarningFill } from "react-icons/ri";
+import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
+// import { RiAddCircleFill } from "react-icons/ri";
 
 const InputProject = function (props) {
   const [projectNames, setProjectName] = useState("");
@@ -35,9 +36,11 @@ const InputProject = function (props) {
   };
 
   return (
-    <div>
+    <div className={style.infoContainer}>
       <form className={style.formContainer} onSubmit={addProjectHandler}>
-        <label>Name</label>
+        <label>
+          <strong>Enter the name of your project.</strong>
+        </label>
         <div className={style.inputContainer}>
           <input
             type="text"
@@ -49,10 +52,13 @@ const InputProject = function (props) {
           </span>
         </div>
 
-        <label>Description</label>
+        <label>
+          <strong>Description of project</strong>
+        </label>
         <div className={style.inputContainer}>
           <input
             type="text"
+            className={style.description}
             value={description}
             onChange={addDescriptionHandler}
           ></input>
@@ -60,7 +66,12 @@ const InputProject = function (props) {
             <RiErrorWarningFill /> Description is required
           </span>
         </div>
-        <button type="submit">Add Project</button>
+        <div className={style.buttonSection}>
+          <RiAddCircleFill className={style.buttonIcon} />
+          <button type="submit">
+            <strong>Add Project</strong>
+          </button>
+        </div>
       </form>
     </div>
   );
