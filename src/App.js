@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddProject from "./Components/AddProject";
 import InputProject from "./Components/InputProject";
 function App() {
-  const [newProject, setNewProject] = useState([]);
+  // const [newProject, setNewProject] = useState(() => {
+  //   const savedProjects = [...JSON.parse(localStorage.getItem("Project"))];
+  //   return savedProjects;
+  // });
+  const [newProject, setNewProject] = useState([
+    ...JSON.parse(localStorage.getItem("Project")),
+  ]);
+
   const newProjectHandler = function (projectName, desc) {
     setNewProject((prevProjects) => {
       return [
@@ -11,6 +18,10 @@ function App() {
       ];
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("Project", JSON.stringify(newProject));
+  }, [newProject]);
 
   const deleteProject = (projectID) => {
     setNewProject((prevProjects) => {
