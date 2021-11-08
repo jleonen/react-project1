@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddProject from "./Components/AddProject";
 import InputProject from "./Components/InputProject";
+import ActionItemModal from "./Components/ActionItemModal";
 function App() {
   // const [newProject, setNewProject] = useState(() => {
   //   const savedProjects = [...JSON.parse(localStorage.getItem("Project"))];
@@ -41,6 +42,7 @@ function App() {
   return (
     <div>
       <InputProject onAddProject={newProjectHandler} />
+      <ActionItemModal />
       <h1 style={{ textAlign: "center" }}>Project List </h1>
       <section>{content}</section>
     </div>
