@@ -1,12 +1,12 @@
 import React from "react";
-import ActionItem from "./ActionItem";
+import ActionItemForm from "./ActionItemForm";
 
 const ActionItemModal = () => {
   const addActionHandler = () => {
     console.log("Modal reached");
   };
 
-  return <ActionItem addAction={addActionHandler} />;
+  return <ActionItemForm addAction={addActionHandler} />;
 };
 
 export default ActionItemModal;
