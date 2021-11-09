@@ -40,6 +40,14 @@ function App() {
     });
   };
 
+  const addActionHandler = (data) => {
+    console.log(data);
+    setActionItems((prevItem) => {
+      return [...prevItem, { id: Math.random().toString(), content: data }];
+    });
+    console.log(actionItems);
+  };
+
   const deleteActionItem = (actionID) => {
     setActionItems((prevActions) => {
       const updatedActionItems = prevActions.filter(
@@ -50,31 +58,30 @@ function App() {
     });
   };
 
-  const addActionHandler = (data) => {
-    console.log(data);
-    setActionItems((prevItem) => {
-      return [...prevItem, { id: Math.random().toString(), content: data }];
-    });
-    console.log(actionItems);
-  };
-
   let content = <p>No projects found. Use form above to add a project.</p>;
   if (newProject.length > 0) {
-    content = <AddProject projects={newProject} onDeleteItem={deleteProject} />;
+    content = (
+      <AddProject
+        projects={newProject}
+        onDeleteItem={deleteProject}
+        actions={actionItems}
+        onDeleteActionItem={deleteActionItem}
+      />
+    );
   }
 
   return (
     <div>
       <InputProject onAddProject={newProjectHandler} />
-      <ActionItemForm addAction={addActionHandler} />
+      {/* <ActionItemForm addAction={addActionHandler} /> */}
       <h1 style={{ textAlign: "center" }}>Project List </h1>
 
       <section>{content}</section>
       <h1>Test again</h1>
-      <AddActionItem
+      {/* <AddActionItem
         actions={actionItems}
         onDeleteActionitem={deleteActionItem}
-      />
+      /> */}
     </div>
   );
 }

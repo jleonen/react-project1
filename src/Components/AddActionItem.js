@@ -9,7 +9,7 @@ const AddActionItem = (props) => {
             id={item.id}
             key={item.id}
             tasks={item.content}
-            onDeleteItem={props.onDeleteActionitem}
+            onDeleteItem={props.onDeleteActionItem}
           />
         ))}
       </ul>
