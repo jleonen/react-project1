@@ -14,6 +14,7 @@ function App() {
   const [newProject, setNewProject] = useState([
     ...JSON.parse(localStorage.getItem("Project")),
   ]);
+  const [actionItems, setActionItems] = useState([]);
 
   const newProjectHandler = function (projectName, desc) {
     setNewProject((prevProjects) => {
@@ -39,11 +40,20 @@ function App() {
     });
   };
 
-  const [actionItems, setActionItems] = useState([]);
+  const deleteActionItem = (actionID) => {
+    setActionItems((prevActions) => {
+      const updatedActionItems = prevActions.filter(
+        (project) => project.id !== actionID
+      );
+
+      return updatedActionItems;
+    });
+  };
+
   const addActionHandler = (data) => {
-    // console.log(data);
+    console.log(data);
     setActionItems((prevItem) => {
-      return [...prevItem, { id: Math.random(), content: data }];
+      return [...prevItem, { id: Math.random().toString(), content: data }];
     });
     console.log(actionItems);
   };
@@ -61,7 +71,10 @@ function App() {
 
       <section>{content}</section>
       <h1>Test again</h1>
-      <AddActionItem actions={actionItems} />
+      <AddActionItem
+        actions={actionItems}
+        onDeleteActionitem={deleteActionItem}
+      />
     </div>
   );
 }
