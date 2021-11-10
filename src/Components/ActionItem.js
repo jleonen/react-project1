@@ -4,13 +4,16 @@ import style from "./ProjectItem.module.css";
 const ActionItem = (props) => {
   const deleteHandler = () => props.onDeleteItem(props.id);
   return (
-    <li>
-      {props.tasks}
-      <button onClick={deleteHandler}>
-        <BiTrash className={style.icon} />
-        Delete Project
-      </button>
-    </li>
+    <div>
+      <h3>{props.project}</h3>
+      <li>
+        {props.tasks}
+        <button onClick={deleteHandler}>
+          <BiTrash className={style.icon} />
+          Delete Project
+        </button>
+      </li>
+    </div>
   );
 };
 

@@ -20,7 +20,12 @@ function App() {
     setNewProject((prevProjects) => {
       return [
         ...prevProjects,
-        { name: projectName, description: desc, id: Math.random().toString() },
+        {
+          name: projectName,
+          description: desc,
+          id: Math.random().toString(),
+          actions: [Math.random().toString()],
+        },
       ];
     });
     console.log(newProject);
@@ -40,10 +45,13 @@ function App() {
     });
   };
 
-  const addActionHandler = (data) => {
+  const addActionHandler = (name, data) => {
     console.log(data);
     setActionItems((prevItem) => {
-      return [...prevItem, { id: Math.random().toString(), content: data }];
+      return [
+        ...prevItem,
+        { id: Math.random().toString(), name: name, content: data },
+      ];
     });
     console.log(actionItems);
   };
@@ -73,15 +81,14 @@ function App() {
   return (
     <div>
       <InputProject onAddProject={newProjectHandler} />
-      {/* <ActionItemForm addAction={addActionHandler} /> */}
+      <ActionItemForm addAction={addActionHandler} />
+      <AddActionItem
+        actions={actionItems}
+        onDeleteActionItem={deleteActionItem}
+      />
       <h1 style={{ textAlign: "center" }}>Project List </h1>
 
       <section>{content}</section>
-      <h1>Test again</h1>
-      {/* <AddActionItem
-        actions={actionItems}
-        onDeleteActionitem={deleteActionItem}
-      /> */}
     </div>
   );
 }

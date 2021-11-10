@@ -5,24 +5,23 @@ import ActionItem from "./ActionItem";
 import AddActionItem from "./AddActionItem";
 
 const AddProject = function (props) {
-  const [actionItems, setActionItems] = useState([]);
-  const addActionHandler = (data) => {
-    // console.log(data);
-    setActionItems((prevItem) => {
-      return [...prevItem, { id: Math.random().toString(), content: data }];
-    });
-    console.log(actionItems);
-  };
+  // const [actionItems, setActionItems] = useState([]);
+  // const addActionHandler = (data) => {
+  //   setActionItems((prevItem) => {
+  //     return [...prevItem, { id: Math.random().toString(), content: data }];
+  //   });
+  //   console.log(actionItems);
+  // };
 
-  const deleteActionItem = (actionID) => {
-    setActionItems((prevActions) => {
-      const updatedActionItems = prevActions.filter(
-        (project) => project.id !== actionID
-      );
+  // const deleteActionItem = (actionID) => {
+  //   setActionItems((prevActions) => {
+  //     const updatedActionItems = prevActions.filter(
+  //       (project) => project.id !== actionID
+  //     );
 
-      return updatedActionItems;
-    });
-  };
+  //     return updatedActionItems;
+  //   });
+  // };
 
   return (
     <div>
@@ -38,14 +37,14 @@ const AddProject = function (props) {
                 <strong>{project.name}</strong>
               </h2>
               <p>{project.description}</p>
-              <AddActionItem
+              {/* <AddActionItem
                 actions={actionItems}
                 onDeleteActionItem={deleteActionItem}
-              />
+              /> */}
             </ProjectItem>
           </div>
         ))}
-        <ActionItemForm addAction={addActionHandler} />
+        {/* <ActionItemForm addAction={addActionHandler} /> */}
       </ul>
     </div>
   );
