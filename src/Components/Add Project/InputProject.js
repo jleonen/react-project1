@@ -1,37 +1,61 @@
 import React, { useState } from "react";
 import style from "./InputProject.module.css";
 import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
+import useFormControl from "../../hooks/form-control";
 
+const validation = (value) => value.trim().length > 0;
 const InputProject = function (props) {
-  const [projectNames, setProjectName] = useState("");
-  const [description, setDescription] = useState("");
-  const [validName, setValidName] = useState(true);
-  const [validDesc, setValidDesc] = useState(true);
+  // const [projectNames, setProjectName] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [validName, setValidName] = useState(true);
+  // const [validDesc, setValidDesc] = useState(true);
 
-  const addNameHandler = (event) => {
-    event.target.value.trim().length > 0 && setValidName(true);
+  const {
+    value: projectNames,
+    contentHandler: addNameHandler,
+    isValid: validName,
+    reset: resetNameHandler,
+  } = useFormControl(validation);
+  const {
+    value: description,
+    contentHandler: addDescriptionHandler,
+    isValid: validDesc,
+    reset: resetDescriptionHandler,
+  } = useFormControl(validation);
 
-    setProjectName(event.target.value);
-  };
+  // const addNameHandler = (event) => {
+  //   event.target.value.trim().length > 0 && setValidName(true);
 
-  const addDescriptionHandler = (event) => {
-    event.target.value.trim().length > 0 && setValidDesc(true);
+  //   setProjectName(event.target.value);
+  // };
 
-    setDescription(event.target.value);
-  };
+  // const addDescriptionHandler = (event) => {
+  //   event.target.value.trim().length > 0 && setValidDesc(true);
 
+  //   setDescription(event.target.value);
+  // };
+
+  let formIsValid = false;
+  if (validName && validDesc) {
+    formIsValid = true;
+  }
   const addProjectHandler = (event) => {
     event.preventDefault();
 
-    projectNames.trim().length === 0 && setValidName(false);
+    if (!formIsValid) {
+      return;
+    }
 
-    description.trim().length === 0 && setValidDesc(false);
+    // projectNames.trim().length === 0 && !validName;
 
-    projectNames.trim().length > 0 &&
-      description.trim().length > 0 &&
-      props.onAddProject(projectNames, description);
-    setProjectName("");
-    setDescription("");
+    // description.trim().length === 0 && !validDesc;
+
+    // projectNames.trim().length > 0 &&
+    //   description.trim().length > 0 &&
+
+    props.onAddProject(projectNames, description);
+    resetNameHandler();
+    resetDescriptionHandler();
   };
 
   return (
