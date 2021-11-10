@@ -2,10 +2,14 @@ import ActionItem from "./ActionItem";
 import ActionItemForm from "./ActionItemForm";
 import { useState, useEffect } from "react";
 import classes from "./AddActionItem.module.css";
+import formControl from "../../hooks/form-control";
+
 const AddActionItem = (props) => {
   const [actionItems, setActionItems] = useState([
     ...JSON.parse(localStorage.getItem("Tasks")),
   ]);
+
+  const { newItemHandler: addActionHandler } = formControl(setActionItems);
 
   useEffect(() => {
     localStorage.setItem("Tasks", JSON.stringify(actionItems));
@@ -13,16 +17,16 @@ const AddActionItem = (props) => {
 
   // const [actionItems, setActionItems] = useState([]);
 
-  const addActionHandler = (name, data) => {
-    console.log(data);
-    setActionItems((prevItem) => {
-      return [
-        ...prevItem,
-        { id: Math.random().toString(), name: name, content: data },
-      ];
-    });
-    console.log(actionItems);
-  };
+  // const addActionHandler = (name, data) => {
+  //   console.log(data);
+  //   setActionItems((prevItem) => {
+  //     return [
+  //       ...prevItem,
+  //       { id: Math.random().toString(), name: name, content: data },
+  //     ];
+  //   });
+  //   console.log(actionItems);
+  // };
 
   const deleteActionItem = (actionID) => {
     setActionItems((prevActions) => {

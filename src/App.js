@@ -5,7 +5,7 @@ import InputProject from "./Components/Add Project/InputProject";
 import ActionItemForm from "./Components/Action Items/ActionItemForm";
 import ActionItem from "./Components/Action Items/ActionItem";
 import AddActionItem from "./Components/Action Items/AddActionItem";
-
+import formControl from "./hooks/form-control";
 function App() {
   // const [newProject, setNewProject] = useState(() => {
   //   const savedProjects = [...JSON.parse(localStorage.getItem("Project"))];
@@ -14,22 +14,24 @@ function App() {
   const [newProject, setNewProject] = useState([
     ...JSON.parse(localStorage.getItem("Project")),
   ]);
+  const { newItemHandler: newProjectHandler } = formControl(setNewProject);
+
   // const [actionItems, setActionItems] = useState([]);
 
-  const newProjectHandler = function (projectName, desc) {
-    setNewProject((prevProjects) => {
-      return [
-        ...prevProjects,
-        {
-          name: projectName,
-          description: desc,
-          id: Math.random().toString(),
-          actions: [Math.random().toString()],
-        },
-      ];
-    });
-    console.log(newProject);
-  };
+  // const newProjectHandler = function (projectName, desc) {
+  //   setNewProject((prevProjects) => {
+  //     return [
+  //       ...prevProjects,
+  //       {
+  //         name: projectName,
+  //         description: desc,
+  //         id: Math.random().toString(),
+  //         actions: [Math.random().toString()],
+  //       },
+  //     ];
+  //   });
+  //   console.log(newProject);
+  // };
 
   useEffect(() => {
     localStorage.setItem("Project", JSON.stringify(newProject));

@@ -36,7 +36,7 @@ const AddProject = function (props) {
               <h2>
                 <strong>{project.name}</strong>
               </h2>
-              <p>{project.description}</p>
+              <p>{project.content}</p>
             </ProjectItem>
           </div>
         ))}
