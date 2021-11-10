@@ -13,8 +13,18 @@ const formControl = (updateFunction) => {
       ];
     });
   };
+
+  const deleteItem = (id) => {
+    updateFunction((prevItems) => {
+      const updatedProjects = prevItems.filter((project) => project.id !== id);
+
+      return updatedProjects;
+    });
+  };
+
   return {
     newItemHandler,
+    deleteItem,
   };
 };
 

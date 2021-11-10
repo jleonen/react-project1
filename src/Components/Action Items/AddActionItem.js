@@ -9,7 +9,8 @@ const AddActionItem = (props) => {
     ...JSON.parse(localStorage.getItem("Tasks")),
   ]);
 
-  const { newItemHandler: addActionHandler } = formControl(setActionItems);
+  const { newItemHandler: addActionHandler, deleteItem: deleteActionItem } =
+    formControl(setActionItems);
 
   useEffect(() => {
     localStorage.setItem("Tasks", JSON.stringify(actionItems));
@@ -28,15 +29,15 @@ const AddActionItem = (props) => {
   //   console.log(actionItems);
   // };
 
-  const deleteActionItem = (actionID) => {
-    setActionItems((prevActions) => {
-      const updatedActionItems = prevActions.filter(
-        (project) => project.id !== actionID
-      );
+  // const deleteActionItem = (actionID) => {
+  //   setActionItems((prevActions) => {
+  //     const updatedActionItems = prevActions.filter(
+  //       (project) => project.id !== actionID
+  //     );
 
-      return updatedActionItems;
-    });
-  };
+  //     return updatedActionItems;
+  //   });
+  // };
 
   const actions = actionItems;
   return (
