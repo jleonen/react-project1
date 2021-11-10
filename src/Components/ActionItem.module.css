@@ -1,0 +1,9 @@
+.actionContainer {
+  border: 20px solid #fec5bb;
+  background-color: white;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 36%;
+}

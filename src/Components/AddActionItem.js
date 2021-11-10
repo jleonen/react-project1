@@ -1,6 +1,7 @@
 import ActionItem from "./ActionItem";
 import ActionItemForm from "./ActionItemForm";
 import { useState } from "react";
+import classes from "./ActionItem.module.css";
 const AddActionItem = (props) => {
   const [actionItems, setActionItems] = useState([]);
 
@@ -27,10 +28,10 @@ const AddActionItem = (props) => {
 
   const actions = actionItems;
   return (
-    <div>
+    <div className={classes.actionContainer}>
       <ActionItemForm addAction={addActionHandler} />
       <ul>
-        <h2>Today's Action Items </h2>
+        <h2>Today's Tasks</h2>
         {actions.map((item) => (
           <ActionItem
             id={item.id}

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import classes from "./ActionItemForm.module.css";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
 
 const ActionItem = (props) => {
   const [item, setItem] = useState("");
@@ -21,12 +23,18 @@ const ActionItem = (props) => {
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
-        <label>Project</label>
-        <input type="text" onChange={nameChangeHandler} value={name} />
-        <label>Action Item</label>
-        <input type="text" onChange={itemChangeHandler} value={item} />
-        <button type="submit">Submit</button>
+      <form className={classes.formContainer} onSubmit={submitHandler}>
+        <div className={classes.formContent}>
+          <label>Project</label>
+          <input type="text" onChange={nameChangeHandler} value={name} />
+        </div>
+        <div className={classes.formContent}>
+          <label>Action Item</label>
+          <input type="text" onChange={itemChangeHandler} value={item} />
+        </div>
+        <button type="submit">
+          Submit <IoCheckmarkCircleOutline />
+        </button>
       </form>
     </div>
   );

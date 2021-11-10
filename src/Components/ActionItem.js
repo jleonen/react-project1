@@ -10,7 +10,7 @@ const ActionItem = (props) => {
         {props.tasks}
         <button onClick={deleteHandler}>
           <BiTrash className={style.icon} />
-          Delete Project
+          Delete Item
         </button>
       </li>
     </div>
