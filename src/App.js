@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import AddProject from "./Components/AddProject";
-import InputProject from "./Components/InputProject";
+import AddProject from "./Components/Add Project/AddProject";
+import InputProject from "./Components/Add Project/InputProject";
 // import ActionItemModal from "./Components/ActionItemModal";
-import ActionItemForm from "./Components/ActionItemForm";
-import ActionItem from "./Components/ActionItem";
-import AddActionItem from "./Components/AddActionItem";
+import ActionItemForm from "./Components/Action Items/ActionItemForm";
+import ActionItem from "./Components/Action Items/ActionItem";
+import AddActionItem from "./Components/Action Items/AddActionItem";
 
 function App() {
   // const [newProject, setNewProject] = useState(() => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { BiTrash } from "react-icons/bi";
-import style from "./ProjectItem.module.css";
+import style from "../Add Project/ProjectItem.module.css";
 const ActionItem = (props) => {
   const deleteHandler = () => props.onDeleteItem(props.id);
   return (
