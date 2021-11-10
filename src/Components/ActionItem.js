@@ -7,10 +7,9 @@ const ActionItem = (props) => {
     <div>
       <h3>{props.project}</h3>
       <li>
-        {props.tasks}
+        <p>{props.tasks}</p>
         <button onClick={deleteHandler}>
           <BiTrash className={style.icon} />
-          Delete Item
         </button>
       </li>
     </div>

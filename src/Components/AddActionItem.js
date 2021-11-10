@@ -38,7 +38,7 @@ const AddActionItem = (props) => {
   return (
     <div className={classes.actionContainer}>
       <ActionItemForm addAction={addActionHandler} />
-      <ul>
+      <ul className={classes.content}>
         <h2 className={classes.taskHeading}>Today's Tasks</h2>
         {actions.map((item) => (
           <ActionItem

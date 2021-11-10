@@ -10,16 +10,21 @@
   align-items: center;
 }
 
+.formSection {
+  display: flex;
+  justify-content: center;
+}
+
 label {
   font-weight: bold;
 }
 
 .submitBtn {
   font-size: 18px;
+  border-radius: 12px;
 }
 
 .submitBtn:hover {
   background-color: #fec5bb;
   font-weight: bold;
-  border-radius: 12px;
 }

@@ -22,15 +22,21 @@ const ActionItem = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.formSection}>
       <form className={classes.formContainer} onSubmit={submitHandler}>
         <div className={classes.formContent}>
-          <label>Project</label>
+          <label>Related Project</label>
           <input type="text" onChange={nameChangeHandler} value={name} />
         </div>
         <div className={classes.formContent}>
-          <label>Action Item</label>
-          <input type="text" onChange={itemChangeHandler} value={item} />
+          <label>Project Task</label>
+          <textarea
+            rows="3"
+            cols="25"
+            type="text"
+            onChange={itemChangeHandler}
+            value={item}
+          />
         </div>
         <button className={classes.submitBtn} type="submit">
           Submit <IoCheckmarkCircleOutline />
