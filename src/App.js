@@ -14,7 +14,7 @@ function App() {
   const [newProject, setNewProject] = useState([
     ...JSON.parse(localStorage.getItem("Project")),
   ]);
-  const [actionItems, setActionItems] = useState([]);
+  // const [actionItems, setActionItems] = useState([]);
 
   const newProjectHandler = function (projectName, desc) {
     setNewProject((prevProjects) => {
@@ -44,27 +44,6 @@ function App() {
       return updatedProjects;
     });
   };
-
-  // const addActionHandler = (name, data) => {
-  //   console.log(data);
-  //   setActionItems((prevItem) => {
-  //     return [
-  //       ...prevItem,
-  //       { id: Math.random().toString(), name: name, content: data },
-  //     ];
-  //   });
-  //   console.log(actionItems);
-  // };
-
-  // const deleteActionItem = (actionID) => {
-  //   setActionItems((prevActions) => {
-  //     const updatedActionItems = prevActions.filter(
-  //       (project) => project.id !== actionID
-  //     );
-
-  //     return updatedActionItems;
-  //   });
-  // };
 
   let content = <p>No projects found. Use form above to add a project.</p>;
   if (newProject.length > 0) {

@@ -14,11 +14,11 @@ label {
   font-weight: bold;
 }
 
-button {
+.submitBtn {
   font-size: 18px;
 }
 
-button:hover {
+.submitBtn:hover {
   background-color: #fec5bb;
   font-weight: bold;
   border-radius: 12px;

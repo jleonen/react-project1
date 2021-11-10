@@ -1,9 +1,17 @@
 import ActionItem from "./ActionItem";
 import ActionItemForm from "./ActionItemForm";
-import { useState } from "react";
-import classes from "./ActionItem.module.css";
+import { useState, useEffect } from "react";
+import classes from "./AddActionItem.module.css";
 const AddActionItem = (props) => {
-  const [actionItems, setActionItems] = useState([]);
+  const [actionItems, setActionItems] = useState([
+    ...JSON.parse(localStorage.getItem("Tasks")),
+  ]);
+
+  useEffect(() => {
+    localStorage.setItem("Tasks", JSON.stringify(actionItems));
+  }, [actionItems]);
+
+  // const [actionItems, setActionItems] = useState([]);
 
   const addActionHandler = (name, data) => {
     console.log(data);
@@ -31,7 +39,7 @@ const AddActionItem = (props) => {
     <div className={classes.actionContainer}>
       <ActionItemForm addAction={addActionHandler} />
       <ul>
-        <h2>Today's Tasks</h2>
+        <h2 className={classes.taskHeading}>Today's Tasks</h2>
         {actions.map((item) => (
           <ActionItem
             id={item.id}

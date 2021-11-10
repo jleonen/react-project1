@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ProjectItem from "./ProjectItem";
-import ActionItemForm from "./ActionItemForm";
-import ActionItem from "./ActionItem";
-import AddActionItem from "./AddActionItem";
+// import ActionItemForm from "./ActionItemForm";
+// import ActionItem from "./ActionItem";
+// import AddActionItem from "./AddActionItem";
 
 const AddProject = function (props) {
   // const [actionItems, setActionItems] = useState([]);
@@ -37,14 +37,9 @@ const AddProject = function (props) {
                 <strong>{project.name}</strong>
               </h2>
               <p>{project.description}</p>
-              {/* <AddActionItem
-                actions={actionItems}
-                onDeleteActionItem={deleteActionItem}
-              /> */}
             </ProjectItem>
           </div>
         ))}
-        {/* <ActionItemForm addAction={addActionHandler} /> */}
       </ul>
     </div>
   );

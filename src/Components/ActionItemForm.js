@@ -32,7 +32,7 @@ const ActionItem = (props) => {
           <label>Action Item</label>
           <input type="text" onChange={itemChangeHandler} value={item} />
         </div>
-        <button type="submit">
+        <button className={classes.submitBtn} type="submit">
           Submit <IoCheckmarkCircleOutline />
         </button>
       </form>
