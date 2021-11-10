@@ -2,7 +2,7 @@ import ActionItem from "./ActionItem";
 import ActionItemForm from "./ActionItemForm";
 import { useState, useEffect } from "react";
 import classes from "./AddActionItem.module.css";
-import formControl from "../../hooks/form-control";
+import useItemControl from "../../hooks/item-control";
 
 const AddActionItem = (props) => {
   const [actionItems, setActionItems] = useState([
@@ -10,7 +10,7 @@ const AddActionItem = (props) => {
   ]);
 
   const { newItemHandler: addActionHandler, deleteItem: deleteActionItem } =
-    formControl(setActionItems);
+    useItemControl(setActionItems);
 
   useEffect(() => {
     localStorage.setItem("Tasks", JSON.stringify(actionItems));

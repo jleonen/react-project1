@@ -28,3 +28,12 @@ label {
   background-color: #fec5bb;
   font-weight: bold;
 }
+
+.error {
+  display: inline;
+  color: red;
+}
+
+.hidden {
+  display: none;
+}

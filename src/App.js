@@ -5,7 +5,7 @@ import InputProject from "./Components/Add Project/InputProject";
 import ActionItemForm from "./Components/Action Items/ActionItemForm";
 import ActionItem from "./Components/Action Items/ActionItem";
 import AddActionItem from "./Components/Action Items/AddActionItem";
-import formControl from "./hooks/form-control";
+import useItemControl from "./hooks/item-control";
 function App() {
   // const [newProject, setNewProject] = useState(() => {
   //   const savedProjects = [...JSON.parse(localStorage.getItem("Project"))];
@@ -15,7 +15,7 @@ function App() {
     ...JSON.parse(localStorage.getItem("Project")),
   ]);
   const { newItemHandler: newProjectHandler, deleteItem: deleteProject } =
-    formControl(setNewProject);
+    useItemControl(setNewProject);
 
   // const [actionItems, setActionItems] = useState([]);
 
