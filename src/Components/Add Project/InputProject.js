@@ -14,12 +14,14 @@ const InputProject = function (props) {
     value: projectNames,
     contentHandler: addNameHandler,
     isValid: validName,
+    onBlur: nameBlurHandler,
     reset: resetNameHandler,
   } = useFormControl(validation);
   const {
     value: description,
     contentHandler: addDescriptionHandler,
     isValid: validDesc,
+    onBlur: descriptionBlurHandler,
     reset: resetDescriptionHandler,
   } = useFormControl(validation);
 
@@ -41,6 +43,7 @@ const InputProject = function (props) {
   }
   const addProjectHandler = (event) => {
     event.preventDefault();
+    console.log(validName, validDesc);
 
     if (!formIsValid) {
       return;
@@ -69,8 +72,9 @@ const InputProject = function (props) {
             type="text"
             value={projectNames}
             onChange={addNameHandler}
+            onBlur={nameBlurHandler}
           ></input>
-          <span className={validName ? style.hidden : style.error}>
+          <span className={validName === true ? style.hidden : style.error}>
             <RiErrorWarningFill /> Name is required
           </span>
         </div>
@@ -86,6 +90,7 @@ const InputProject = function (props) {
             className={style.description}
             value={description}
             onChange={addDescriptionHandler}
+            onBlur={descriptionBlurHandler}
           ></textarea>
           <span className={validDesc ? style.hidden : style.error}>
             <RiErrorWarningFill /> Description is required

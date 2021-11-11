@@ -2,10 +2,13 @@ import { useState, useReducer } from "react";
 
 const inputStateReducer = (state, action) => {
   if (action.type === "INPUT") {
-    return { value: action.value, isValid: true };
+    return { value: action.value, isValid: action.value.trim().length > 0 };
+  }
+  if (action.type === "BLUR") {
+    return { isTouched: true, value: state.value };
   }
   if (action.type === "RESET") {
-    return { isValid: true, value: "" };
+    return { isValid: false, value: "" };
   }
   return inputStateReducer;
 };
@@ -45,6 +48,11 @@ const useFormControl = (validateValue) => {
 
     // updateContent(event.target.value);
   };
+
+  const inputBlurHandler = (event) => {
+    dispatchInput({ type: "BLUR" });
+  };
+
   const valueIsValid = validateValue(inputState.value);
   const reset = () => {
     dispatchInput({ type: "RESET" });
@@ -66,6 +74,7 @@ const useFormControl = (validateValue) => {
   return {
     value: inputState.value,
     isValid: valueIsValid,
+    blur: inputBlurHandler,
     // validName,
     // validDesc,
     // setValidName,
