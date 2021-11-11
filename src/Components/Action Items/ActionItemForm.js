@@ -2,32 +2,62 @@ import React, { useState } from "react";
 import classes from "./ActionItemForm.module.css";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
+import useFormControl from "../../hooks/form-control";
 
+const validation = (value) => value.trim().length > 0;
 const ActionItem = (props) => {
-  const [content, setContent] = useState("");
-  const [name, setName] = useState("");
-  const [validName, setValidName] = useState(true);
-  const [validDesc, setValidDesc] = useState(true);
+  // const [content, setContent] = useState("");
+  // const [name, setName] = useState("");
+  // const [validName, setValidName] = useState(true);
+  // const [validDesc, setValidDesc] = useState(true);
 
-  const contentChangeHandler = (event) => {
-    event.target.value.trim().length > 0 && setValidDesc(true);
-    setContent(event.target.value);
-  };
-  const nameChangeHandler = (event) => {
-    event.target.value.trim().length > 0 && setValidName(true);
-    setName(event.target.value);
-  };
+  const {
+    value: name,
+    contentHandler: nameChangeHandler,
+    isValid: validName,
+    onBlur: nameBlurHandler,
+    error: nameError,
+    reset: resetNameHandler,
+  } = useFormControl(validation);
+  const {
+    value: content,
+    contentHandler: contentChangeHandler,
+    isValid: validDesc,
+    onBlur: descriptionBlurHandler,
+    error: descriptionError,
+    reset: resetDescriptionHandler,
+  } = useFormControl(validation);
+
+  // const contentChangeHandler = (event) => {
+  //   event.target.value.trim().length > 0 && setValidDesc(true);
+  //   setContent(event.target.value);
+  // };
+  // const nameChangeHandler = (event) => {
+  //   event.target.value.trim().length > 0 && setValidName(true);
+  //   setName(event.target.value);
+  // };
+
+  let formIsValid = false;
+  if (validName && validDesc) {
+    formIsValid = true;
+  }
 
   const submitHandler = (event) => {
     event.preventDefault();
-    content.trim().length === 0 && setValidDesc(false);
-    name.trim().length === 0 && setValidName(false);
+    // content.trim().length === 0 && setValidDesc(false);
+    // name.trim().length === 0 && setValidName(false);
 
-    content.trim().length > 0 &&
-      name.trim().length > 0 &&
-      props.addAction(name, content);
-    setContent("");
-    setName("");
+    if (!formIsValid) {
+      return;
+    }
+
+    // content.trim().length > 0 &&
+    //   name.trim().length > 0 &&
+    props.addAction(name, content);
+    // setContent("");
+    // setName("");
+    resetNameHandler();
+    resetDescriptionHandler();
   };
 
   return (

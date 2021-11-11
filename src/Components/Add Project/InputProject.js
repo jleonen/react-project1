@@ -15,6 +15,7 @@ const InputProject = function (props) {
     contentHandler: addNameHandler,
     isValid: validName,
     onBlur: nameBlurHandler,
+    error: nameError,
     reset: resetNameHandler,
   } = useFormControl(validation);
   const {
@@ -22,6 +23,7 @@ const InputProject = function (props) {
     contentHandler: addDescriptionHandler,
     isValid: validDesc,
     onBlur: descriptionBlurHandler,
+    error: descriptionError,
     reset: resetDescriptionHandler,
   } = useFormControl(validation);
 
@@ -43,7 +45,7 @@ const InputProject = function (props) {
   }
   const addProjectHandler = (event) => {
     event.preventDefault();
-    console.log(validName, validDesc);
+    console.log(nameError, descriptionError);
 
     if (!formIsValid) {
       return;
@@ -74,9 +76,11 @@ const InputProject = function (props) {
             onChange={addNameHandler}
             onBlur={nameBlurHandler}
           ></input>
-          <span className={validName === true ? style.hidden : style.error}>
-            <RiErrorWarningFill /> Name is required
-          </span>
+          {!validName && (
+            <span className={style.error}>
+              <RiErrorWarningFill /> Name is required
+            </span>
+          )}
         </div>
 
         <label>
@@ -92,9 +96,11 @@ const InputProject = function (props) {
             onChange={addDescriptionHandler}
             onBlur={descriptionBlurHandler}
           ></textarea>
-          <span className={validDesc ? style.hidden : style.error}>
-            <RiErrorWarningFill /> Description is required
-          </span>
+          {!validDesc && (
+            <span className={style.error}>
+              <RiErrorWarningFill /> Description is required
+            </span>
+          )}
         </div>
         <div className={style.buttonSection}>
           <button type="submit">
