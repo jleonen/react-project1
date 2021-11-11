@@ -65,7 +65,12 @@ const ActionItem = (props) => {
       <form className={classes.formContainer} onSubmit={submitHandler}>
         <div className={classes.formContent}>
           <label>Related Project</label>
-          <input type="text" onChange={nameChangeHandler} value={name} />
+          <input
+            type="text"
+            onChange={nameChangeHandler}
+            onBlur={nameBlurHandler}
+            value={name}
+          />
           <span className={validName ? classes.hidden : classes.error}>
             <RiErrorWarningFill /> Name is required
           </span>
@@ -77,6 +82,7 @@ const ActionItem = (props) => {
             cols="25"
             type="text"
             onChange={contentChangeHandler}
+            onBlur={descriptionBlurHandler}
             value={content}
           />
           <span className={validDesc ? classes.hidden : classes.error}>
