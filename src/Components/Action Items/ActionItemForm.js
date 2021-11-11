@@ -4,7 +4,7 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
 import useFormControl from "../../hooks/form-control";
 
-const validation = (value) => value.trim().length > 0;
+// const validation = (value) => value.trim().length > 0;
 const ActionItem = (props) => {
   // const [content, setContent] = useState("");
   // const [name, setName] = useState("");
@@ -16,17 +16,19 @@ const ActionItem = (props) => {
     contentHandler: nameChangeHandler,
     isValid: validName,
     onBlur: nameBlurHandler,
-    error: nameError,
+    // error: nameError,
+    formIsValid,
+    setFormIsValid,
     reset: resetNameHandler,
-  } = useFormControl(validation);
+  } = useFormControl();
   const {
     value: content,
     contentHandler: contentChangeHandler,
     isValid: validDesc,
     onBlur: descriptionBlurHandler,
-    error: descriptionError,
+    // error: descriptionError,
     reset: resetDescriptionHandler,
-  } = useFormControl(validation);
+  } = useFormControl();
 
   // const contentChangeHandler = (event) => {
   //   event.target.value.trim().length > 0 && setValidDesc(true);
@@ -37,25 +39,24 @@ const ActionItem = (props) => {
   //   setName(event.target.value);
   // };
 
-  let formIsValid = false;
-  if (validName && validDesc) {
-    formIsValid = true;
-  }
+  // let formIsValid = false;
+  // if (validName && validDesc) {
+  //   formIsValid = true;
+  // }
 
   const submitHandler = (event) => {
     event.preventDefault();
     // content.trim().length === 0 && setValidDesc(false);
     // name.trim().length === 0 && setValidName(false);
-
-    if (!formIsValid) {
+    if (validName && validDesc) {
+      setFormIsValid(true);
+    } else {
+      setFormIsValid(false);
       return;
     }
 
-    // content.trim().length > 0 &&
-    //   name.trim().length > 0 &&
     props.addAction(name, content);
-    // setContent("");
-    // setName("");
+
     resetNameHandler();
     resetDescriptionHandler();
   };
@@ -71,9 +72,11 @@ const ActionItem = (props) => {
             onBlur={nameBlurHandler}
             value={name}
           />
-          <span className={validName ? classes.hidden : classes.error}>
-            <RiErrorWarningFill /> Name is required
-          </span>
+          {!formIsValid && !validName && (
+            <span className={classes.error}>
+              <RiErrorWarningFill /> Name is required
+            </span>
+          )}
         </div>
         <div className={classes.formContent}>
           <label>Project Task</label>
@@ -85,9 +88,11 @@ const ActionItem = (props) => {
             onBlur={descriptionBlurHandler}
             value={content}
           />
-          <span className={validDesc ? classes.hidden : classes.error}>
-            <RiErrorWarningFill /> Description is required
-          </span>
+          {!formIsValid && !validDesc && (
+            <span className={classes.error}>
+              <RiErrorWarningFill /> Description is required
+            </span>
+          )}
         </div>
         <button className={classes.submitBtn} type="submit">
           Submit <IoCheckmarkCircleOutline />
