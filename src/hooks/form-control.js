@@ -2,13 +2,13 @@ import { useState, useReducer } from "react";
 
 const inputStateReducer = (state, action) => {
   if (action.type === "INPUT") {
-    return { value: action.value, isTyping: state.isTyping };
+    return { value: action.value, isValid: action.value.trim().length > 0 };
   }
   if (action.type === "BLUR") {
-    return { isTyping: true, value: state.value };
+    return { isValid: state.value.trim().length > 0, value: state.value };
   }
   if (action.type === "RESET") {
-    return { isTyping: false, value: "" };
+    return { isValid: false, value: "" };
   }
   return inputStateReducer;
 };
@@ -25,10 +25,11 @@ const inputStateReducer = (state, action) => {
 const useFormControl = (validateValue) => {
   //   const [validName, setValidName] = useState(true);
   //   const [validDesc, setValidDesc] = useState(true);
+  const [formIsValid, setFormIsValid] = useState(true);
 
   const [inputState, dispatchInput] = useReducer(inputStateReducer, {
     value: "",
-    isTyping: false,
+    isValid: null,
   });
   //   const [descriptionState, dispatchDesc] = useReducer(descStateReducer, {
   //     value: "",
@@ -53,8 +54,9 @@ const useFormControl = (validateValue) => {
     dispatchInput({ type: "BLUR" });
   };
 
-  const valueIsValid = validateValue(inputState.value);
-  const error = !valueIsValid && inputState.isTyping;
+  // const valueIsValid = validateValue(inputState.value);
+  // const valueIsValid = inputState.value.trim().length > 0;
+  // const error = !valueIsValid && inputState.isTyping;
   // const error = true;
   const reset = () => {
     dispatchInput({ type: "RESET" });
@@ -75,13 +77,12 @@ const useFormControl = (validateValue) => {
   //   };
   return {
     value: inputState.value,
-    isValid: valueIsValid,
+    isValid: inputState.isValid,
     blur: inputBlurHandler,
-    error,
-    // validName,
-    // validDesc,
-    // setValidName,
-    // setValidDesc,
+    // typing: inputState.isTyping,
+    // error,
+    formIsValid,
+    setFormIsValid,
     contentHandler,
     // submitHandler,
     reset,

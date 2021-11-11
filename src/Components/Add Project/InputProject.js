@@ -3,7 +3,7 @@ import style from "./InputProject.module.css";
 import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
 import useFormControl from "../../hooks/form-control";
 
-const validation = (value) => value.trim().length > 0;
+// const validation = (value) => value.trim().length > 0;
 const InputProject = function (props) {
   // const [projectNames, setProjectName] = useState("");
   // const [description, setDescription] = useState("");
@@ -15,17 +15,21 @@ const InputProject = function (props) {
     contentHandler: addNameHandler,
     isValid: validName,
     onBlur: nameBlurHandler,
-    error: nameError,
     reset: resetNameHandler,
-  } = useFormControl(validation);
+    formIsValid,
+    setFormIsValid,
+  } = useFormControl();
   const {
     value: description,
     contentHandler: addDescriptionHandler,
     isValid: validDesc,
+
     onBlur: descriptionBlurHandler,
-    error: descriptionError,
+
     reset: resetDescriptionHandler,
-  } = useFormControl(validation);
+  } = useFormControl();
+
+  console.log(validName, validDesc);
 
   // const addNameHandler = (event) => {
   //   event.target.value.trim().length > 0 && setValidName(true);
@@ -39,24 +43,19 @@ const InputProject = function (props) {
   //   setDescription(event.target.value);
   // };
 
-  let formIsValid = false;
-  if (validName && validDesc) {
-    formIsValid = true;
-  }
+  // if (validName && validDesc) {
+  //   formIsValid = true;
+  // }
   const addProjectHandler = (event) => {
     event.preventDefault();
-    console.log(nameError, descriptionError);
-
-    if (!formIsValid) {
+    // console.log(nameError, descriptionError);
+    if (validName && validDesc) {
+      setFormIsValid(true);
+    } else {
+      console.log(formIsValid);
+      setFormIsValid(false);
       return;
     }
-
-    // projectNames.trim().length === 0 && !validName;
-
-    // description.trim().length === 0 && !validDesc;
-
-    // projectNames.trim().length > 0 &&
-    //   description.trim().length > 0 &&
 
     props.onAddProject(projectNames, description);
     resetNameHandler();
@@ -76,7 +75,7 @@ const InputProject = function (props) {
             onChange={addNameHandler}
             onBlur={nameBlurHandler}
           ></input>
-          {!validName && (
+          {formIsValid === false && !validName && (
             <span className={style.error}>
               <RiErrorWarningFill /> Name is required
             </span>
@@ -96,7 +95,7 @@ const InputProject = function (props) {
             onChange={addDescriptionHandler}
             onBlur={descriptionBlurHandler}
           ></textarea>
-          {!validDesc && (
+          {!formIsValid && !validDesc && (
             <span className={style.error}>
               <RiErrorWarningFill /> Description is required
             </span>
