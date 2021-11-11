@@ -1,14 +1,22 @@
 const useItemControl = (updateFunction) => {
   const newItemHandler = function (name, content) {
     updateFunction((prevItems) => {
-      return [
-        ...prevItems,
-        {
-          name: name,
-          content: content,
-          id: Math.random().toString(),
-        },
-      ];
+      const existingItem = prevItems.filter((item) => item.name === name);
+      if (existingItem.length === 1) {
+        console.log(existingItem);
+        existingItem[0]["content"] = [...existingItem[0].content, content];
+        console.log(existingItem[0].content);
+        return [...prevItems];
+      } else {
+        return [
+          ...prevItems,
+          {
+            name: name,
+            content: [content],
+            id: Math.random().toString(),
+          },
+        ];
+      }
     });
   };
 

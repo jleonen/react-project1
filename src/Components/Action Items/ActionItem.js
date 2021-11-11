@@ -7,10 +7,18 @@ const ActionItem = (props) => {
     <div>
       <h3>{props.project}</h3>
       <li>
-        <p>{props.tasks}</p>
+        {props.tasks.map((item) => (
+          <div>
+            <p>{item}</p>
+            <button onClick={deleteHandler}>
+              <BiTrash className={style.icon} />
+            </button>
+          </div>
+        ))}
+        {/* 
         <button onClick={deleteHandler}>
           <BiTrash className={style.icon} />
-        </button>
+        </button> */}
       </li>
     </div>
   );
