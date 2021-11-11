@@ -3,7 +3,6 @@ import style from "./InputProject.module.css";
 import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
 import useFormControl from "../../hooks/form-control";
 
-// const validation = (value) => value.trim().length > 0;
 const InputProject = function (props) {
   // const [projectNames, setProjectName] = useState("");
   // const [description, setDescription] = useState("");
@@ -29,26 +28,9 @@ const InputProject = function (props) {
     reset: resetDescriptionHandler,
   } = useFormControl();
 
-  console.log(validName, validDesc);
-
-  // const addNameHandler = (event) => {
-  //   event.target.value.trim().length > 0 && setValidName(true);
-
-  //   setProjectName(event.target.value);
-  // };
-
-  // const addDescriptionHandler = (event) => {
-  //   event.target.value.trim().length > 0 && setValidDesc(true);
-
-  //   setDescription(event.target.value);
-  // };
-
-  // if (validName && validDesc) {
-  //   formIsValid = true;
-  // }
   const addProjectHandler = (event) => {
     event.preventDefault();
-    // console.log(nameError, descriptionError);
+
     if (validName && validDesc) {
       setFormIsValid(true);
     } else {

@@ -16,29 +16,6 @@ const AddActionItem = (props) => {
     localStorage.setItem("Tasks", JSON.stringify(actionItems));
   }, [actionItems]);
 
-  // const [actionItems, setActionItems] = useState([]);
-
-  // const addActionHandler = (name, data) => {
-  //   console.log(data);
-  //   setActionItems((prevItem) => {
-  //     return [
-  //       ...prevItem,
-  //       { id: Math.random().toString(), name: name, content: data },
-  //     ];
-  //   });
-  //   console.log(actionItems);
-  // };
-
-  // const deleteActionItem = (actionID) => {
-  //   setActionItems((prevActions) => {
-  //     const updatedActionItems = prevActions.filter(
-  //       (project) => project.id !== actionID
-  //     );
-
-  //     return updatedActionItems;
-  //   });
-  // };
-
   const actions = actionItems;
   return (
     <div className={classes.actionContainer}>

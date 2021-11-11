@@ -4,7 +4,6 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
 import useFormControl from "../../hooks/form-control";
 
-// const validation = (value) => value.trim().length > 0;
 const ActionItem = (props) => {
   // const [content, setContent] = useState("");
   // const [name, setName] = useState("");
@@ -16,7 +15,7 @@ const ActionItem = (props) => {
     contentHandler: nameChangeHandler,
     isValid: validName,
     onBlur: nameBlurHandler,
-    // error: nameError,
+
     formIsValid,
     setFormIsValid,
     reset: resetNameHandler,
@@ -26,28 +25,13 @@ const ActionItem = (props) => {
     contentHandler: contentChangeHandler,
     isValid: validDesc,
     onBlur: descriptionBlurHandler,
-    // error: descriptionError,
+
     reset: resetDescriptionHandler,
   } = useFormControl();
 
-  // const contentChangeHandler = (event) => {
-  //   event.target.value.trim().length > 0 && setValidDesc(true);
-  //   setContent(event.target.value);
-  // };
-  // const nameChangeHandler = (event) => {
-  //   event.target.value.trim().length > 0 && setValidName(true);
-  //   setName(event.target.value);
-  // };
-
-  // let formIsValid = false;
-  // if (validName && validDesc) {
-  //   formIsValid = true;
-  // }
-
   const submitHandler = (event) => {
     event.preventDefault();
-    // content.trim().length === 0 && setValidDesc(false);
-    // name.trim().length === 0 && setValidName(false);
+
     if (validName && validDesc) {
       setFormIsValid(true);
     } else {
