@@ -18,8 +18,9 @@ const AddActionItem = (props) => {
 
   const actions = actionItems;
   // const taskList = actions.map((item) => {
-
-  // })
+  //   console.log(item);
+  // });
+  // console.log(taskList);
   return (
     <div className={classes.actionContainer}>
       <ActionItemForm addAction={addActionHandler} />
@@ -30,6 +31,7 @@ const AddActionItem = (props) => {
             id={item.id}
             key={item.id}
             tasks={item.content}
+            // tasks={item.name}
             project={item.name}
             onDeleteItem={deleteActionItem}
           />
