@@ -4,7 +4,9 @@ const useItemControl = (updateFunction) => {
   const [modal, setModal] = useState(false);
   const newItemHandler = function (name, content) {
     updateFunction((prevItems) => {
-      const existingItem = prevItems.filter((item) => item.name === name);
+      const existingItem = prevItems.filter(
+        (item) => item.name.toLowerCase() === name.toLowerCase()
+      );
       if (existingItem.length >= 1) {
         console.log("Updating action items");
         // console.log(existingItem);
