@@ -4,9 +4,9 @@ const useItemControl = (updateFunction) => {
       const existingItem = prevItems.filter((item) => item.name === name);
       if (existingItem.length >= 1) {
         console.log("Updating action items");
-        // console.log(existingItem);
+
         existingItem[0]["content"] = [...existingItem[0].content, content];
-        // console.log(existingItem[0].content);
+
         return [...prevItems];
       } else {
         console.log("Making new item");
@@ -37,6 +37,8 @@ const useItemControl = (updateFunction) => {
       return updatedProjects;
     });
   };
+
+  /////////////Testing for deleting specific items in task list
 
   //   updateFunction((prevItems) => {
   //     const currentActionItems = prevItems.filter(

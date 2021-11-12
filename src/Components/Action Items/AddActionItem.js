@@ -31,7 +31,6 @@ const AddActionItem = (props) => {
             id={item.id}
             key={item.id}
             tasks={item.content}
-            // tasks={item.name}
             project={item.name}
             onDeleteItem={deleteActionItem}
           />
