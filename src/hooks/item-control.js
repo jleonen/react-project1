@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 const useItemControl = (updateFunction) => {
+  const [modal, setModal] = useState(false);
   const newItemHandler = function (name, content) {
     updateFunction((prevItems) => {
       const existingItem = prevItems.filter((item) => item.name === name);
@@ -7,9 +10,11 @@ const useItemControl = (updateFunction) => {
         // console.log(existingItem);
         existingItem[0]["content"] = [...existingItem[0].content, content];
         // console.log(existingItem[0].content);
+        setModal(false);
         return [...prevItems];
       } else {
         console.log("Making new item");
+        setModal(false);
         return [
           ...prevItems,
           {
@@ -72,6 +77,8 @@ const useItemControl = (updateFunction) => {
   return {
     newItemHandler,
     deleteItem,
+    modal,
+    setModal,
   };
 };
 

@@ -10,6 +10,14 @@
   align-items: center;
 }
 
+.formContent label {
+  font-size: 30px;
+}
+
+.formContent input {
+  width: 200px;
+}
+
 .formSection {
   display: flex;
   justify-content: center;
