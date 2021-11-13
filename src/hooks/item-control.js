@@ -8,11 +8,6 @@ const useItemControl = (updateFunction) => {
         (item) => item.name.toLowerCase().trim() === name.toLowerCase().trim()
       );
       if (existingItem.length >= 1) {
-<<<<<<< HEAD
-        console.log("Updating action items");
-
-=======
->>>>>>> actionItems
         existingItem[0]["content"] = [...existingItem[0].content, content];
         setModal(false);
         return [...prevItems];
@@ -54,47 +49,12 @@ const useItemControl = (updateFunction) => {
     });
   };
 
-<<<<<<< HEAD
-  /////////////Testing for deleting specific items in task list
-
-  //   updateFunction((prevItems) => {
-  //     const currentActionItems = prevItems.filter(
-  //       (project) => project.id === id
-  //     );
-  //     console.log(currentActionItems);
-  //     if (currentActionItems.length >= 2) {
-  //       console.log(currentActionItems[0]["content"]);
-  //       // const updatedActionItems = currentActionItems[0]["content"].splice(
-  //       //   event.target.id,
-  //       //   1
-  //       // );
-  //       currentActionItems[0]["content"].splice(event.target.id, 1);
-  //       console.log(currentActionItems);
-  //       // const updatedProjects = prevItems.filter(
-  //       //   (project) => project.id !== id
-  //       // );
-  //       // return [...prevItems, ...updatedActionItems];
-  //       return [...prevItems];
-  //     } else {
-  //       console.log("active");
-  //       updateFunction((prevItems) => {
-  //         const updatedProjects = prevItems.filter(
-  //           (project) => project.id !== id
-  //         );
-  //         return updatedProjects;
-  //       });
-  //       // };
-  //     }
-  //   });
-  // };
-=======
   const deleteAll = (id) => {
     updateFunction((prevItems) => {
       const updatedTaskList = prevItems.filter((project) => project.id !== id);
       return updatedTaskList;
     });
   };
->>>>>>> actionItems
 
   return {
     newItemHandler,
