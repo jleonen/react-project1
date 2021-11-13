@@ -6,7 +6,6 @@ const Button = (props) => {
     <div className={classes.buttonSection}>
       <button type={props.type} onClick={props.onClick}>
         <RiAddCircleFill className={classes.buttonIcon} />
-        {/* <span>Add Project</span> */}
         {props.children}
       </button>
     </div>

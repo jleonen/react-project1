@@ -20,6 +20,7 @@ function App() {
     deleteItem: deleteProject,
     modal,
     setModal,
+    deleteAll,
   } = useItemControl(setNewProject);
 
   useEffect(() => {
@@ -32,7 +33,13 @@ function App() {
 
   let content = <p>No projects found. Use form above to add a project.</p>;
   if (newProject.length > 0) {
-    content = <AddProject projects={newProject} onDeleteItem={deleteProject} />;
+    content = (
+      <AddProject
+        projects={newProject}
+        onDeleteItem={deleteProject}
+        onDeleteAll={deleteAll}
+      />
+    );
   }
 
   return (

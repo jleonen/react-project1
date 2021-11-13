@@ -36,13 +36,37 @@ const useItemControl = (updateFunction) => {
   };
 
   const deleteItem = (id, event) => {
-    // console.log(event.target.id);
+    console.log(event.target.innerHTML);
+    // console.log(id);
 
     updateFunction((prevItems) => {
-      const updatedProjects = prevItems.filter((project) => project.id !== id);
+      "Length is 1";
+      let updatedProjects = prevItems.filter((project) => project.id === id);
+      if (updatedProjects[0]["content"].length === 1) {
+        const updatedTaskList = prevItems.filter(
+          (project) => project.id !== id
+        );
+        return updatedTaskList;
+      } else {
+        console.log("More than 1");
 
-      return updatedProjects;
+        const updatedActionList = prevItems.filter(
+          (project) => project.id === id
+        );
+        updatedActionList[0]["content"] = updatedActionList[0][
+          "content"
+        ].filter((item) => item !== event.target.innerHTML);
+        // console.log(updatedActions);
+        console.log(updatedActionList[0]["content"]);
+        return [...prevItems];
+      }
     });
+
+    // updateFunction((prevItems) => {
+    //   const updatedProjects = prevItems.filter((project) => project.id !== id);
+
+    //   return updatedProjects;
+    // });
   };
 
   //   updateFunction((prevItems) => {
@@ -76,11 +100,19 @@ const useItemControl = (updateFunction) => {
   //   });
   // };
 
+  const deleteAll = (id) => {
+    updateFunction((prevItems) => {
+      const updatedTaskList = prevItems.filter((project) => project.id !== id);
+      return updatedTaskList;
+    });
+  };
+
   return {
     newItemHandler,
     deleteItem,
     modal,
     setModal,
+    deleteAll,
   };
 };
 
