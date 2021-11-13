@@ -8,10 +8,12 @@ const useItemControl = (updateFunction) => {
         (item) => item.name.toLowerCase().trim() === name.toLowerCase().trim()
       );
       if (existingItem.length >= 1) {
+<<<<<<< HEAD
         console.log("Updating action items");
 
+=======
+>>>>>>> actionItems
         existingItem[0]["content"] = [...existingItem[0].content, content];
-        // console.log(existingItem[0].content);
         setModal(false);
         return [...prevItems];
       } else {
@@ -21,12 +23,6 @@ const useItemControl = (updateFunction) => {
           ...prevItems,
           {
             name: name,
-            // content: [
-            //   {
-            //     id: Math.random().toString(),
-            //     description: content,
-            //   },
-            // ],
             content: [content],
             id: Math.random().toString(),
           },
@@ -36,15 +32,29 @@ const useItemControl = (updateFunction) => {
   };
 
   const deleteItem = (id, event) => {
-    // console.log(event.target.id);
+    // console.log(event.target.innerHTML);
 
     updateFunction((prevItems) => {
-      const updatedProjects = prevItems.filter((project) => project.id !== id);
+      const targetProject = prevItems.filter((project) => project.id === id);
 
-      return updatedProjects;
+      //code re-runs if block after update.Set length to 0
+      //if project does not have any more items left, delete the whole project from task list
+      if (targetProject[0]["content"].length === 0) {
+        const updatedTaskList = prevItems.filter(
+          (project) => project.id !== id
+        );
+        return updatedTaskList;
+      } else {
+        //change value of content property
+        targetProject[0]["content"] = targetProject[0]["content"].filter(
+          (item) => item !== event.target.innerHTML
+        );
+        return [...prevItems];
+      }
     });
   };
 
+<<<<<<< HEAD
   /////////////Testing for deleting specific items in task list
 
   //   updateFunction((prevItems) => {
@@ -77,12 +87,21 @@ const useItemControl = (updateFunction) => {
   //     }
   //   });
   // };
+=======
+  const deleteAll = (id) => {
+    updateFunction((prevItems) => {
+      const updatedTaskList = prevItems.filter((project) => project.id !== id);
+      return updatedTaskList;
+    });
+  };
+>>>>>>> actionItems
 
   return {
     newItemHandler,
     deleteItem,
     modal,
     setModal,
+    deleteAll,
   };
 };
 

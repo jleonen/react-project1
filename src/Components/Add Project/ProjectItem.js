@@ -8,8 +8,6 @@ const ProjectItem = function (props) {
   return (
     <li className={style.lineItem}>
       {props.children}
-      {/* <BiTrash className={style.icon} onClick={deleteHandler} />
-      <span onClick={deleteHandler}>Delete Project</span> */}
       <button onClick={deleteHandler}>
         <BiTrash className={style.icon} />
         Delete Project

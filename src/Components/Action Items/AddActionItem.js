@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import classes from "./AddActionItem.module.css";
 import useItemControl from "../../hooks/item-control";
 import Modal from "../UI/Modal";
-import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
 import Button from "../UI/Button";
 
 const AddActionItem = (props) => {
@@ -17,6 +16,7 @@ const AddActionItem = (props) => {
     deleteItem: deleteActionItem,
     modal,
     setModal,
+    deleteAll,
   } = useItemControl(setActionItems);
 
   const toggleModalHandler = () => {
@@ -48,6 +48,7 @@ const AddActionItem = (props) => {
             tasks={item.content}
             project={item.name}
             onDeleteItem={deleteActionItem}
+            onDeleteAll={deleteAll}
           />
         ))}
       </ul>
