@@ -8,10 +8,7 @@ const useItemControl = (updateFunction) => {
         (item) => item.name.toLowerCase().trim() === name.toLowerCase().trim()
       );
       if (existingItem.length >= 1) {
-        console.log("Updating action items");
-        // console.log(existingItem);
         existingItem[0]["content"] = [...existingItem[0].content, content];
-        // console.log(existingItem[0].content);
         setModal(false);
         return [...prevItems];
       } else {
@@ -21,12 +18,6 @@ const useItemControl = (updateFunction) => {
           ...prevItems,
           {
             name: name,
-            // content: [
-            //   {
-            //     id: Math.random().toString(),
-            //     description: content,
-            //   },
-            // ],
             content: [content],
             id: Math.random().toString(),
           },
@@ -39,64 +30,24 @@ const useItemControl = (updateFunction) => {
     // console.log(event.target.innerHTML);
 
     updateFunction((prevItems) => {
-      let updatedProjects = prevItems.filter((project) => project.id === id);
+      const targetProject = prevItems.filter((project) => project.id === id);
 
       //code re-runs if block after update.Set length to 0
-      if (updatedProjects[0]["content"].length === 0) {
+      //if project does not have any more items left, delete the whole project from task list
+      if (targetProject[0]["content"].length === 0) {
         const updatedTaskList = prevItems.filter(
           (project) => project.id !== id
         );
         return updatedTaskList;
       } else {
-        const updatedActionList = prevItems.filter(
-          (project) => project.id === id
+        //change value of content property
+        targetProject[0]["content"] = targetProject[0]["content"].filter(
+          (item) => item !== event.target.innerHTML
         );
-
-        updatedActionList[0]["content"] = updatedActionList[0][
-          "content"
-        ].filter((item) => item !== event.target.innerHTML);
-
         return [...prevItems];
       }
     });
-
-    // updateFunction((prevItems) => {
-    //   const updatedProjects = prevItems.filter((project) => project.id !== id);
-
-    //   return updatedProjects;
-    // });
   };
-
-  //   updateFunction((prevItems) => {
-  //     const currentActionItems = prevItems.filter(
-  //       (project) => project.id === id
-  //     );
-  //     console.log(currentActionItems);
-  //     if (currentActionItems.length >= 2) {
-  //       console.log(currentActionItems[0]["content"]);
-  //       // const updatedActionItems = currentActionItems[0]["content"].splice(
-  //       //   event.target.id,
-  //       //   1
-  //       // );
-  //       currentActionItems[0]["content"].splice(event.target.id, 1);
-  //       console.log(currentActionItems);
-  //       // const updatedProjects = prevItems.filter(
-  //       //   (project) => project.id !== id
-  //       // );
-  //       // return [...prevItems, ...updatedActionItems];
-  //       return [...prevItems];
-  //     } else {
-  //       console.log("active");
-  //       updateFunction((prevItems) => {
-  //         const updatedProjects = prevItems.filter(
-  //           (project) => project.id !== id
-  //         );
-  //         return updatedProjects;
-  //       });
-  //       // };
-  //     }
-  //   });
-  // };
 
   const deleteAll = (id) => {
     updateFunction((prevItems) => {
