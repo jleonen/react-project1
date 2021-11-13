@@ -3,8 +3,9 @@ import ActionItemForm from "./ActionItemForm";
 import { useState, useEffect } from "react";
 import classes from "./AddActionItem.module.css";
 import useItemControl from "../../hooks/item-control";
-import Modal from "./ActionItemModal";
+import Modal from "../UI/Modal";
 import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
+import Button from "../UI/Button";
 
 const AddActionItem = (props) => {
   const [actionItems, setActionItems] = useState([
@@ -51,12 +52,15 @@ const AddActionItem = (props) => {
           />
         ))}
       </ul>
-      <div className={classes.buttonSection}>
+      {/* <div className={classes.buttonSection}>
         <button onClick={toggleModalHandler} className={classes.btnModal}>
           <RiAddCircleFill className={classes.btnIcon} />
           <span>Add New Task</span>
         </button>
-      </div>
+      </div> */}
+      <Button onClick={toggleModalHandler}>
+        <span>Add Task</span>
+      </Button>
     </div>
   );
 };

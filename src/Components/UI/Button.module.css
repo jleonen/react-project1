@@ -1,16 +1,20 @@
-/* .btnModal {
-
-  margin-inline: auto;
-  font-size: 18px;
-  border-radius: 12px;
-  margin-bottom: 10px;
+.buttonSection button {
   cursor: pointer;
+  margin: auto;
 }
 
-.btnIcon {
+.buttonSection button:hover {
+  background-color: #fec5bb;
+}
+
+.buttonIcon {
   width: 25px;
   height: 30px;
   color: #f7d5d0;
+}
+
+.buttonSection span {
+  font-size: 18px;
 }
 
 .buttonSection button {
@@ -26,9 +30,3 @@
 .buttonSection button span {
   font-weight: bold;
 }
-
-.btnModal:hover {
-  background-color: #fec5bb;
-  font-weight: bold;
-  color: white;
-} */
