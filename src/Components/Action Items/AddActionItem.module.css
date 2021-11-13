@@ -23,34 +23,3 @@
 .content h3 {
   font-size: 25px;
 }
-
-.btnModal {
-  /* margin-left: 200px; */
-  margin-inline: auto;
-  font-size: 18px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.btnIcon {
-  width: 25px;
-  height: 30px;
-  color: #f7d5d0;
-}
-
-.buttonSection button {
-  border: none;
-  background: white;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.btnModal:hover {
-  background-color: #fec5bb;
-  font-weight: bold;
-  color: white;
-}

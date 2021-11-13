@@ -5,8 +5,7 @@ import InputProject from "./Components/Add Project/InputProject";
 import AddActionItem from "./Components/Action Items/AddActionItem";
 import useItemControl from "./hooks/item-control";
 import Modal from "./Components/UI/Modal";
-import classes from "./App.module.css";
-import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
+
 import Button from "./Components/UI/Button";
 function App() {
   // const [newProject, setNewProject] = useState(() => {
@@ -43,16 +42,9 @@ function App() {
           <InputProject onAddProject={newProjectHandler} />
         </Modal>
       )}
-      {/* <ActionItemForm addAction={addActionHandler} /> */}
       <AddActionItem />
       <h1 style={{ textAlign: "center" }}>Project List </h1>
       <section>{content}</section>
-      {/* <div className={classes.buttonSection}>
-        <button onClick={toggleModalHandler} className={classes.btnModal}>
-          <RiAddCircleFill className={classes.btnIcon} />
-          <span>Add New Project Idea</span>
-        </button>
-      </div> */}
       <Button onClick={toggleModalHandler}>
         <span>Add New Project Idea</span>
       </Button>
