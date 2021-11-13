@@ -31,7 +31,7 @@ const AddProject = function (props) {
             <ProjectItem
               key={project.id}
               id={project.id}
-              onDelete={props.onDeleteItem}
+              onDelete={props.onDeleteAll}
             >
               <h2>
                 <strong>{project.name}</strong>

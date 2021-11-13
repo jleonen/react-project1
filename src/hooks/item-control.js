@@ -36,28 +36,26 @@ const useItemControl = (updateFunction) => {
   };
 
   const deleteItem = (id, event) => {
-    console.log(event.target.innerHTML);
-    // console.log(id);
+    // console.log(event.target.innerHTML);
 
     updateFunction((prevItems) => {
-      "Length is 1";
       let updatedProjects = prevItems.filter((project) => project.id === id);
-      if (updatedProjects[0]["content"].length === 1) {
+
+      //code re-runs if block after update.Set length to 0
+      if (updatedProjects[0]["content"].length === 0) {
         const updatedTaskList = prevItems.filter(
           (project) => project.id !== id
         );
         return updatedTaskList;
       } else {
-        console.log("More than 1");
-
         const updatedActionList = prevItems.filter(
           (project) => project.id === id
         );
+
         updatedActionList[0]["content"] = updatedActionList[0][
           "content"
         ].filter((item) => item !== event.target.innerHTML);
-        // console.log(updatedActions);
-        console.log(updatedActionList[0]["content"]);
+
         return [...prevItems];
       }
     });
