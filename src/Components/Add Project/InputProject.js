@@ -69,8 +69,8 @@ const InputProject = function (props) {
         </label>
         <div className={style.inputContainer}>
           <textarea
-            rows="2"
-            cols="25"
+            rows="15"
+            cols="80"
             type="text"
             className={style.description}
             value={description}
