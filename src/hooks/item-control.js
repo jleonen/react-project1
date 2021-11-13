@@ -5,7 +5,7 @@ const useItemControl = (updateFunction) => {
   const newItemHandler = function (name, content) {
     updateFunction((prevItems) => {
       const existingItem = prevItems.filter(
-        (item) => item.name.toLowerCase() === name.toLowerCase()
+        (item) => item.name.toLowerCase().trim() === name.toLowerCase().trim()
       );
       if (existingItem.length >= 1) {
         console.log("Updating action items");
