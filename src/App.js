@@ -4,6 +4,9 @@ import InputProject from "./Components/Add Project/InputProject";
 // import ActionItemModal from "./Components/ActionItemModal";
 import AddActionItem from "./Components/Action Items/AddActionItem";
 import useItemControl from "./hooks/item-control";
+import Modal from "./Components/UI/Modal";
+
+import Button from "./Components/UI/Button";
 function App() {
   // const [newProject, setNewProject] = useState(() => {
   //   const savedProjects = [...JSON.parse(localStorage.getItem("Project"))];
@@ -12,12 +15,20 @@ function App() {
   const [newProject, setNewProject] = useState([
     ...JSON.parse(localStorage.getItem("Project")),
   ]);
-  const { newItemHandler: newProjectHandler, deleteItem: deleteProject } =
-    useItemControl(setNewProject);
+  const {
+    newItemHandler: newProjectHandler,
+    deleteItem: deleteProject,
+    modal,
+    setModal,
+  } = useItemControl(setNewProject);
 
   useEffect(() => {
     localStorage.setItem("Project", JSON.stringify(newProject));
   }, [newProject]);
+
+  const toggleModalHandler = () => {
+    setModal(!modal);
+  };
 
   let content = <p>No projects found. Use form above to add a project.</p>;
   if (newProject.length > 0) {
@@ -26,12 +37,17 @@ function App() {
 
   return (
     <div>
-      <InputProject onAddProject={newProjectHandler} />
-      {/* <ActionItemForm addAction={addActionHandler} /> */}
+      {modal && (
+        <Modal onClose={toggleModalHandler}>
+          <InputProject onAddProject={newProjectHandler} />
+        </Modal>
+      )}
       <AddActionItem />
       <h1 style={{ textAlign: "center" }}>Project List </h1>
-
       <section>{content}</section>
+      <Button onClick={toggleModalHandler}>
+        <span>Add New Project Idea</span>
+      </Button>
     </div>
   );
 }

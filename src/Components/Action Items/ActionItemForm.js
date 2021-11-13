@@ -65,8 +65,8 @@ const ActionItem = (props) => {
         <div className={classes.formContent}>
           <label>Project Task</label>
           <textarea
-            rows="3"
-            cols="25"
+            rows="10"
+            cols="50"
             type="text"
             onChange={contentChangeHandler}
             onBlur={descriptionBlurHandler}

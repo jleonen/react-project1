@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./InputProject.module.css";
 import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
 import useFormControl from "../../hooks/form-control";
+import Button from "../UI/Button";
 
 const InputProject = function (props) {
   // const [projectNames, setProjectName] = useState("");
@@ -69,8 +70,8 @@ const InputProject = function (props) {
         </label>
         <div className={style.inputContainer}>
           <textarea
-            rows="2"
-            cols="25"
+            rows="15"
+            cols="80"
             type="text"
             className={style.description}
             value={description}
@@ -83,12 +84,15 @@ const InputProject = function (props) {
             </span>
           )}
         </div>
-        <div className={style.buttonSection}>
+        {/* <div className={style.buttonSection}>
           <button type="submit">
             <RiAddCircleFill className={style.buttonIcon} />
             <span>Add Project</span>
           </button>
-        </div>
+        </div> */}
+        <Button type="submit">
+          <span>Add Project</span>
+        </Button>
       </form>
     </div>
   );

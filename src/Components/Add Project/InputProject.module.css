@@ -17,10 +17,13 @@ form label {
 .formContainer {
   gap: 20px;
   margin-bottom: 100px;
-  border: 20px solid #fec5bb;
   width: 500px;
 
   background-color: white;
+}
+
+.formContainer label strong {
+  font-size: 30px;
 }
 
 .hidden {
@@ -30,37 +33,4 @@ form label {
 .error {
   display: inline;
   color: red;
-}
-
-.description {
-  height: 100px;
-  width: 300px;
-}
-
-.buttonSection button {
-  cursor: pointer;
-}
-
-.buttonSection button:hover {
-  background-color: #fec5bb;
-}
-
-.buttonIcon {
-  width: 25px;
-  height: 30px;
-  color: #f7d5d0;
-}
-
-.buttonSection span {
-  font-size: 18px;
-}
-
-.buttonSection button {
-  border: none;
-  background: white;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
 }

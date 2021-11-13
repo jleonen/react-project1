@@ -3,14 +3,25 @@ import ActionItemForm from "./ActionItemForm";
 import { useState, useEffect } from "react";
 import classes from "./AddActionItem.module.css";
 import useItemControl from "../../hooks/item-control";
+import Modal from "../UI/Modal";
+import { RiErrorWarningFill, RiAddCircleFill } from "react-icons/ri";
+import Button from "../UI/Button";
 
 const AddActionItem = (props) => {
   const [actionItems, setActionItems] = useState([
     ...JSON.parse(localStorage.getItem("Tasks")),
   ]);
 
-  const { newItemHandler: addActionHandler, deleteItem: deleteActionItem } =
-    useItemControl(setActionItems);
+  const {
+    newItemHandler: addActionHandler,
+    deleteItem: deleteActionItem,
+    modal,
+    setModal,
+  } = useItemControl(setActionItems);
+
+  const toggleModalHandler = () => {
+    setModal(!modal);
+  };
 
   useEffect(() => {
     localStorage.setItem("Tasks", JSON.stringify(actionItems));
@@ -23,7 +34,11 @@ const AddActionItem = (props) => {
   // console.log(taskList);
   return (
     <div className={classes.actionContainer}>
-      <ActionItemForm addAction={addActionHandler} />
+      {modal && (
+        <Modal onClose={toggleModalHandler}>
+          <ActionItemForm addAction={addActionHandler} />
+        </Modal>
+      )}
       <ul className={classes.content}>
         <h2 className={classes.taskHeading}>Today's Tasks</h2>
         {actions.map((item) => (
@@ -36,6 +51,15 @@ const AddActionItem = (props) => {
           />
         ))}
       </ul>
+      {/* <div className={classes.buttonSection}>
+        <button onClick={toggleModalHandler} className={classes.btnModal}>
+          <RiAddCircleFill className={classes.btnIcon} />
+          <span>Add New Task</span>
+        </button>
+      </div> */}
+      <Button onClick={toggleModalHandler}>
+        <span>Add Task</span>
+      </Button>
     </div>
   );
 };
