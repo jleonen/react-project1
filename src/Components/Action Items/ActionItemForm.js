@@ -49,21 +49,36 @@ const ActionItem = (props) => {
     <div className={classes.formSection}>
       <form className={classes.formContainer} onSubmit={submitHandler}>
         <div className={classes.formContent}>
-          <label>Related Project</label>
-          <input
+          <label for="projectList">Choose Related Project</label>
+          <select
+            name="projects"
+            id="project"
+            onChange={nameChangeHandler}
+            onBlur={nameBlurHandler}
+            value={name}
+          >
+            <option> Choose a project </option>
+            {props.projectList.map((item) => (
+              <option name={item.name} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+          {/* <input
             type="text"
             onChange={nameChangeHandler}
             onBlur={nameBlurHandler}
             value={name}
-          />
+          /> */}
           {!formIsValid && !validName && (
             <span className={classes.error}>
-              <RiErrorWarningFill /> Name is required
+              <RiErrorWarningFill /> Choose a project
             </span>
           )}
         </div>
         <div className={classes.formContent}>
-          <label>Project Task</label>
+          <label>Task</label>
+
           <textarea
             rows="10"
             cols="50"

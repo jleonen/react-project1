@@ -36,7 +36,11 @@ const AddActionItem = (props) => {
     <div className={classes.actionContainer}>
       {modal && (
         <Modal onClose={toggleModalHandler}>
-          <ActionItemForm addAction={addActionHandler} />
+          <ActionItemForm
+            addAction={addActionHandler}
+            newProject={props.projectNames}
+            projectList={props.projects}
+          />
         </Modal>
       )}
       <ul className={classes.content}>

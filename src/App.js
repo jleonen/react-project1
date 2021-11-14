@@ -7,7 +7,7 @@ import useItemControl from "./hooks/item-control";
 import Modal from "./Components/UI/Modal";
 
 import Button from "./Components/UI/Button";
-function App() {
+function App(props) {
   // const [newProject, setNewProject] = useState(() => {
   //   const savedProjects = [...JSON.parse(localStorage.getItem("Project"))];
   //   return savedProjects;
@@ -49,7 +49,7 @@ function App() {
           <InputProject onAddProject={newProjectHandler} />
         </Modal>
       )}
-      <AddActionItem />
+      <AddActionItem projects={newProject} />
       <h1 style={{ textAlign: "center" }}>Project List </h1>
       <section>{content}</section>
       <Button onClick={toggleModalHandler}>
