@@ -62,6 +62,11 @@ const AddActionItem = (props) => {
           <span>Add New Task</span>
         </button>
       </div> */}
+      {actionItems.length === 0 && (
+        <span className={classes.startingContent}>
+          There are no tasks at the moment. Click below to add a task!
+        </span>
+      )}
       <Button onClick={toggleModalHandler}>
         <span>Add Task</span>
       </Button>
