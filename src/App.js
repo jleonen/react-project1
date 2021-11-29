@@ -8,13 +8,19 @@ import Modal from "./Components/UI/Modal";
 
 import Button from "./Components/UI/Button";
 function App(props) {
-  // const [newProject, setNewProject] = useState(() => {
-  //   const savedProjects = [...JSON.parse(localStorage.getItem("Project"))];
-  //   return savedProjects;
-  // });
-  const [newProject, setNewProject] = useState([
-    ...JSON.parse(localStorage.getItem("Project")),
-  ]);
+  // const [newProject, setNewProject] = useState([
+  //   ...JSON.parse(localStorage.getItem("Project")),
+  // ]);
+  const [newProject, setNewProject] = useState([]);
+
+  useEffect(() => {
+    if (newProject) {
+      setNewProject([...JSON.parse(localStorage.getItem("Project"))]);
+    } else {
+      console.log("empty");
+    }
+  }, []);
+
   const {
     newItemHandler: newProjectHandler,
     deleteItem: deleteProject,

@@ -7,9 +7,15 @@ import Modal from "../UI/Modal";
 import Button from "../UI/Button";
 
 const AddActionItem = (props) => {
-  const [actionItems, setActionItems] = useState([
-    ...JSON.parse(localStorage.getItem("Tasks")),
-  ]);
+  const [actionItems, setActionItems] = useState([]);
+
+  useEffect(() => {
+    if (actionItems) {
+      setActionItems([...JSON.parse(localStorage.getItem("Tasks"))]);
+    } else {
+      console.log("empty");
+    }
+  }, []);
 
   const {
     newItemHandler: addActionHandler,
@@ -44,7 +50,7 @@ const AddActionItem = (props) => {
         </Modal>
       )}
       <ul className={classes.content}>
-        <h2 className={classes.taskHeading}>Today's Tasks</h2>
+        <h2 className={classes.taskHeading}>Project Tasks</h2>
         {actions.map((item) => (
           <ActionItem
             id={item.id}
